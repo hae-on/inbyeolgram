@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container mb-5 bg-white rounded p-4">
+    <form action="" method="POST">
+      <div>
+        {% if request.resolver_match.url_name == 'create' %}
+          <p class="create_title text-center">새 게시물 만들기</p>
+        {% else %}
+          <h1 class="text-center my-5">수정하기</h1>
+        {% endif %}
+        <div class="text-right">
+          <input class="btn join_btn px-0 " type="submit" value="공유하기"/>
+        </div>
+      </div>
+      {% csrf_token %}
+      <hr/>
+      <div class="mt-5 px-3">
+        {% bootstrap_form article_form %}
+      </div>
+    </div>
+  </form>
+{% endblock %}
